@@ -3,7 +3,7 @@ import AppBar from 'material-ui/AppBar';
 
 const Navbar = props => {
   return (
-    <AppBar onLeftIconButtonTouchTap={props.handleDrawer} title="Cybrary" />
+    <AppBar showMenuIconButton={false} title="Mic Compare" />
   );
 };
 
