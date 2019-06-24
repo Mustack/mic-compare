@@ -16,7 +16,7 @@ class SnippetRecorder extends Component {
         return (
             <div>
                 <MicCreator onMicCreated={this.onMicCreated}/>
-                { this.state.mics.map(mic => <MicControls name={mic.name}/>) } 
+                { this.state.mics.map((mic, index) => <MicControls name={mic.name} key={index} />) } 
             </div>
         )
     }
