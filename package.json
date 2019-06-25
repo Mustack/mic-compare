@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "async-await-foreach": "^1.0.3",
     "material-ui": "^0.19.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
