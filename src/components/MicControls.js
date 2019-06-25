@@ -4,7 +4,12 @@ import recordSnippet from '../recordSnippet'
 class MicControls extends Component {
     constructor(props) {
         super(props)
-        this.state = {isRecording: false, canRecord: true}
+        this.state = {
+            isRecording: false,
+            canRecord: true
+        }
+
+        this.audioRef = React.createRef()
 
         this.toggleRecording = async () => {
             if (!this.state.isRecording) {
@@ -14,7 +19,9 @@ class MicControls extends Component {
             } else {
                 this.setState({isRecording: false, canRecord: false})
                 const audioUrl = await this.state.stopRecording()
-                this.setState({audioUrl, canRecord: true})
+                this.setState({isRecording: false, canRecord: true})
+                this.audioRef.current.src = audioUrl
+                this.audioRef.current.load()
             }
         }
     }
@@ -26,6 +33,7 @@ class MicControls extends Component {
                 <button onClick={this.toggleRecording} disabled={!this.state.canRecord}>
                     {this.state.isRecording ? 'Stop Recording' : 'Start Recording'}
                 </button>
+                <audio src="" controls ref={this.audioRef}></audio>
             </div>
         )
     }
