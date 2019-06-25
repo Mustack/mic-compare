@@ -14,6 +14,7 @@ async function recordSnippet() {
                 if (event.data.size > 0) {
                     const audioBlob = new Blob([event.data], { 'type' : 'audio/ogg; codecs=opus' })
                     const url = URL.createObjectURL(audioBlob)
+                    stream.getTracks().map(track => track.stop())
                     resolve(url)
                 }
             }
