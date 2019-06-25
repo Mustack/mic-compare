@@ -19,7 +19,7 @@ class MicControls extends Component {
             } else {
                 this.setState({isRecording: false, canRecord: false})
                 const audioUrl = await this.state.stopRecording()
-                this.setState({isRecording: false, canRecord: true})
+                this.setState({canRecord: true})
                 this.audioRef.current.src = audioUrl
                 this.audioRef.current.load()
             }
