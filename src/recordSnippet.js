@@ -2,8 +2,6 @@ async function recordSnippet() {
     console.log('starting snippet recording')
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
     const mediaRecorder = new MediaRecorder(stream)
-
-    
     
     mediaRecorder.start()
 

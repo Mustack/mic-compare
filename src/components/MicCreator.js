@@ -11,7 +11,7 @@ class MicCreator extends Component {
 
         this.handleSubmit = event => {
             event.preventDefault();
-            props.onMicCreated({name: this.state.micName})
+            props.onMicCreated(this.state.micName)
             this.setState({micName: ''})
         }
     }

@@ -7,8 +7,14 @@ class SnippetRecorder extends Component {
         super(props)
         this.state = {mics: []}
 
-        this.onMicCreated = mic => {
-            this.setState({mics: [...this.state.mics, mic]})
+        this.onMicCreated = micName => {
+            this.setState({
+                mics: [...this.state.mics, {name: micName, audioRef: React.createRef()}]
+            })
+        }
+
+        this.playAll = () => {
+            this.state.mics.forEach(mic => mic.audioRef.current.audioRef.current.play())
         }
     }
     
@@ -16,7 +22,11 @@ class SnippetRecorder extends Component {
         return (
             <div>
                 <MicCreator onMicCreated={this.onMicCreated}/>
-                { this.state.mics.map((mic, index) => <MicControls name={mic.name} key={index} />) } 
+                <button onClick={this.playAll}>Play All</button>
+                { this.state.mics.map((mic, index) =>
+                    <MicControls name={mic.name} key={index} ref={mic.audioRef} />
+                  )
+                } 
             </div>
         )
     }
