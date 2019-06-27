@@ -33,6 +33,13 @@ class SnippetRecorder extends Component {
             this.setState({isPlayingAll: false})
         }
     }
+
+    async componentDidMount() {
+        const allDevices = await navigator.mediaDevices.enumerateDevices()
+        const audioInputDevices = allDevices.filter(device => device.kind === 'audioinput')
+        console.log('Audio input devices:', audioInputDevices)
+        this.setState({audioInputDevices})
+    }
     
     render() {
         return (
@@ -40,7 +47,7 @@ class SnippetRecorder extends Component {
                 <MicCreator onMicCreated={this.onMicCreated}/>
                 <button onClick={this.playAll}>Play All</button>
                 { this.state.mics.map((mic, index) =>
-                    <MicControls name={mic.name} key={index} ref={mic.audioRef} />
+                    <MicControls name={mic.name} key={index} ref={mic.audioRef} audioInputDevices={this.state.audioInputDevices} />
                   )
                 } 
             </div>
