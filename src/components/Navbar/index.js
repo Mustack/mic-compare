@@ -1,9 +1,14 @@
-import React from 'react';
-import AppBar from 'material-ui/AppBar';
+import React from 'react'
+import AppBar from '@material-ui/core/AppBar'
+import Toolbar from '@material-ui/core/Toolbar'
 
 const Navbar = props => {
   return (
-    <AppBar showMenuIconButton={false} title="Mic Compare" />
+    <AppBar color="primary" position="static" elevation={0}>
+      <Toolbar>
+        Mic Compare
+      </Toolbar>
+    </AppBar>
   );
 };
 

@@ -1,5 +1,3 @@
-import { rejects } from "assert";
-
 async function recordSnippet(deviceId) {
     console.log('starting snippet recording')
     console.log('Using device: ', deviceId)
